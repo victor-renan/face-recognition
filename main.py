@@ -2,24 +2,6 @@ import time
 import cv2.data
 import numpy as np
 import cv2 as cv
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-# from selenium.webdriver.chrome.service import Service as BraveService
-# from webdriver_manager.chrome import ChromeDriverManager
-# from webdriver_manager.core.utils import ChromeType
-# from selenium import webdriver
-from selenium.webdriver.firefox.service import Service as FirefoxService
-from webdriver_manager.firefox import GeckoDriverManager
-
-driver = webdriver.Firefox(
-    service=FirefoxService(GeckoDriverManager().install()))
-
-driver.get("https://www.youtube.com/watch?v=seoeYYzjGkw")
-
-video = driver.find_element(By.ID, 'movie_player')
-video.send_keys(Keys.SPACE)
-
 
 cap = cv2.VideoCapture(0)
 
