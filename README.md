@@ -4,6 +4,9 @@
 ![OpenCV](https://img.shields.io/badge/OpenCV-5C3EE8.svg?style=for-the-badge&logo=OpenCV&logoColor=white)
 ![Selenium](https://img.shields.io/badge/Selenium-43B02A.svg?style=for-the-badge&logo=Selenium&logoColor=white)
 
+![Python e OpenCV](https://i.imgur.com/LJwBFsw.png)
+
+
 Seja bem vindo a oficina Reconhecimento Facial com Python e OpenCV! Abaixo estão algumas instruções que serão importantíssimas no decorrer do seu projeto. Preste bastante atenção nos comandos dos instrutores para que você não se perda nem fique para trás!
 
 
@@ -31,5 +34,7 @@ Depois, é necessário ter em seu computador e em seu celular o Iriun Webcam par
 
 ## 4. Faça um fork do repositório base
 
-Após entrar na sua conta do GitHub, você deve entrar no seguinte link do repositório oficial do projeto (https://github.com/victor-renan/face-recognition), que possui alguns arquivos bases, que serão utilizados no decorrer
+Após entrar na sua conta do GitHub, você deve entrar no seguinte link do repositório oficial (https://github.com/victor-renan/face-recognition), que possui alguns arquivos bases, que serão utilizados no decorrer do projeto.
+
+![Imagem do repo](https://i.imgur.com/xEuX3eE.png)
 
