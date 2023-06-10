@@ -17,7 +17,7 @@ sg.theme("Dark Amber")
 username_id = '-username-'
 password_id = '-password-'
 login = [
-    [sg.Push(), sg.Text("Seja bem vindo ao sistema do Banco Macambira!", font=('Monospace', 14)), sg.Push()],
+    [sg.Push(), sg.Text("Seja bem vindo ao sistema do Banco Central do Araripe!", font=('Monospace', 14)), sg.Push()],
     [sg.HSeparator()],
     [sg.VPush()],
     [sg.Push(), sg.Text("Digite seu username:"), sg.Push()],
@@ -38,7 +38,7 @@ transactions = [
 ]
 
 # define uma janela com a tela de login
-window = sg.Window("Banco Macambira", login, size=(640, 480))
+window = sg.Window("Banco Central do Araripe", login, size=(640, 480))
 
 # loop da janela
 while True:
@@ -56,7 +56,7 @@ while True:
     
     if values[username_id] in find_all():
         if values[password_id] == db[find_all().index(values[username_id])]["password"]:
-            window2 = sg.Window(f"{values[username_id]} -> (ADMIN) Banco Macambira", transactions)
+            window2 = sg.Window(f"{values[username_id]} -> (ADMIN) Banco Central do Araripe", transactions)
             
             while True:
                 event2, values2 = window2.read()

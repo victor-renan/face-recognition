@@ -20,6 +20,9 @@ e depois
 ```
 pip --version
 ```
+
+Caso o python não esteja instalado, você pode baixa-lo pelo seguinte link `https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe`.
+
 *Obs.: Ambos os comandos devem devem retornar uma versão, ex.: Python 3.10.2*
 
 
@@ -43,3 +46,32 @@ Em seguida abra o `VS Code` e clique em `File` ou `Arquivo` > `Open Folder` ou `
 
 
 ## 4. Uma olhada pelos arquivos baixados
+
+Quando você extrair a pasta, os seguintes arquivos estarão na pasta:
+
+```
+face-recognition
+  |- .gitignore
+  |- reconhecimento.py
+  |- banco.py
+  |- jubileu.py
+  |- requirements.txt
+  |- README.md
+```
+
+### reconhecimento.py
+
+Esse é o arquivo principal, onde você escreverá a maior parte do código.
+
+### requirements.txt
+
+Esse é o arquivo que contém as bibliotecas que serão instaladas.
+
+### banco.py
+
+Arquivo para o desafio do `Banco Central do Araripe`.
+
+### jubileu.py
+
+Arquivo para o desafio do `Jubileu`.
+
