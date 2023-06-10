@@ -51,12 +51,12 @@ Quando você extrair a pasta, os seguintes arquivos estarão na pasta:
 
 ```
 face-recognition
-  |- .gitignore
-  |- reconhecimento.py
-  |- banco.py
-  |- jubileu.py
-  |- requirements.txt
-  |- README.md
+  |--- .gitignore
+  |--- reconhecimento.py
+  |--- banco.py
+  |--- jubileu.py
+  |--- requirements.txt
+  |--- README.md
 ```
 
 ### reconhecimento.py
