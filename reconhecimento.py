@@ -10,7 +10,9 @@ webcam.set(cv.CAP_PROP_FRAME_WIDTH, 640 / 10) # --> Configura a largura
 webcam.set(cv.CAP_PROP_FRAME_HEIGHT, 480 / 10) # --> Configura a altura
 
 # Reconhecedor
-reconhecedor = cv.face.LBPHFaceRecognizer_create()
+reconhecedor = cv.face.LBPHFaceRecognizer_create(
+    radius=2, neighbors=3, grid_x=8, grid_y=8)
+
 reconhecedor.read('./modelos/modelo.yml')
 labels = open('./modelos/modelo.txt', 'r').readlines()
 
@@ -40,10 +42,14 @@ while True:
         cv.rectangle(tela, (x, y), (x + w, y + h), (255, 0, 0), 2)
 
         index, probabilidade = reconhecedor.predict(imagem_cinza[y:y+h, x:x+w])
-
     
         if probabilidade < 100:
-            cv.putText(tela, labels[index].split('\n')[0], (x+5, y-5), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
+            cv.putText(tela, labels[index].split('\n')[0], (x, y-10), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
+            cv.putText(tela, str(str(round(100 - probabilidade) / 100)), (x+w-50, y-10), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
+
+            if labels[index] == labels[2]:
+                cv.putText(tela, "Liberado!", (x, y+h+30), cv.FONT_HERSHEY_COMPLEX, 1, (255, 0, 255), 2)
+                
 
     # Abre a janela com a tela
     cv.imshow("Reconhecimento Facial com Python e OpenCV", tela)

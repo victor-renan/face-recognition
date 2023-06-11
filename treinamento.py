@@ -3,7 +3,8 @@ from PIL import Image
 import numpy as np
 import os
 
-reconhecedor = cv.face.LBPHFaceRecognizer_create()
+reconhecedor = cv.face.LBPHFaceRecognizer_create(
+    radius=2, neighbors=3, grid_x=8, grid_y=8)
 
 classificador = cv.CascadeClassifier(
     cv.data.haarcascades + "haarcascade_frontalface_default.xml")
@@ -24,7 +25,7 @@ def classificar_imagens(pasta):
 
         index = imagens.index(imagem)
 
-        rostos = classificador.detectMultiScale(img)
+        rostos = classificador.detectMultiScale(img, 1.3, 5)
 
         for (x, y, w, h) in rostos:
             rostos_finais.append(img[y:y+h, x:x+w])
@@ -32,6 +33,7 @@ def classificar_imagens(pasta):
             indexes.append(index)
 
     return rostos_finais, indexes, labels
+
 
 rostos, indexes, labels = classificar_imagens('./fotos')
 
@@ -42,7 +44,7 @@ with open('./modelos/modelo.txt', 'w') as f:
     for label in labels:
         f.write(label)
         f.write('\n')
-    
+
     f.close()
 
 
