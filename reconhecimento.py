@@ -11,7 +11,10 @@ webcam.set(cv.CAP_PROP_FRAME_HEIGHT, 480 / 10) # --> Configura a altura
 
 # Reconhecedor
 reconhecedor = cv.face.LBPHFaceRecognizer_create()
-reconhecedor.read('model.yml')
+reconhecedor.read('./modelos/modelo.yml')
+labels = open('./modelos/modelo.txt', 'r').readlines()
+
+print(labels)
 
 # Classificador 
 classificador = cv.CascadeClassifier(
@@ -22,13 +25,13 @@ while True:
     # Executa a leitura
     camera_aberta, tela = webcam.read()
 
-    # Imagem
-    imagem_cinza = cv.cvtColor(tela, cv.COLOR_BGR2GRAY)
-
     # Verifica se nao tem erros
     if not camera_aberta:
         print("ocorreu algum erro na webcam")
         break
+
+    # Imagem Cinza
+    imagem_cinza = cv.cvtColor(tela, cv.COLOR_BGR2GRAY)
 
     # Classificador
     rostos = classificador.detectMultiScale(imagem_cinza, 1.3, 5)
@@ -38,7 +41,9 @@ while True:
 
         index, probabilidade = reconhecedor.predict(imagem_cinza[y:y+h, x:x+w])
 
-        cv.putText(tela, str(index), (x+5, y-5), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
+    
+        if probabilidade < 100:
+            cv.putText(tela, labels[index].split('\n')[0], (x+5, y-5), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
 
     # Abre a janela com a tela
     cv.imshow("Reconhecimento Facial com Python e OpenCV", tela)

@@ -6,32 +6,44 @@ import os
 reconhecedor = cv.face.LBPHFaceRecognizer_create()
 
 classificador = cv.CascadeClassifier(
-  cv.data.haarcascades + "haarcascade_frontalface_default.xml")
+    cv.data.haarcascades + "haarcascade_frontalface_default.xml")
 
-def classificarImagens(pasta):
-  imagens = [os.path.join(pasta, f) for f in os.listdir(pasta)]
 
-  print(imagens)
+def classificar_imagens(pasta):
+    imagens = [os.path.join(pasta, f) for f in os.listdir(pasta)]
 
-  rostos_finais = []
-  indexes = []
+    print(imagens)
 
-  for imagem in imagens:
-      img = Image.open(imagem).convert("L")
-      img = np.array(img, 'uint8')
+    rostos_finais = []
+    indexes = []
+    labels = []
 
-      index = imagens.index(imagem)      
-      rostos = classificador.detectMultiScale(img)
+    for imagem in imagens:
+        img = Image.open(imagem).convert("L")
+        img = np.array(img, 'uint8')
 
-      for (x, y, w, h) in rostos:
-          rostos_finais.append(img[y:y+h, x:x+w])
-          indexes.append(index)
+        index = imagens.index(imagem)
 
-  return rostos_finais, indexes
+        rostos = classificador.detectMultiScale(img)
 
-rostos, indexes = classificarImagens('./fotos')
+        for (x, y, w, h) in rostos:
+            rostos_finais.append(img[y:y+h, x:x+w])
+            labels.append(imagem.split('/')[-1].split('.')[0])
+            indexes.append(index)
+
+    return rostos_finais, indexes, labels
+
+rostos, indexes, labels = classificar_imagens('./fotos')
 
 reconhecedor.train(rostos, np.array(indexes))
-reconhecedor.write('model.yml')
+reconhecedor.write('./modelos/modelo.yml')
+
+with open('./modelos/modelo.txt', 'w') as f:
+    for label in labels:
+        f.write(label)
+        f.write('\n')
+    
+    f.close()
+
 
 print(f"{len(np.unique(indexes))} rostos treinados, {indexes}")
