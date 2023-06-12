@@ -52,9 +52,12 @@ Quando você extrair a pasta, os seguintes arquivos estarão na pasta:
 ```
 face-recognition
   |--- .gitignore
+  |--- modelos
+  |--- imagens
   |--- reconhecimento.py
+  |--- treinamento.py
   |--- banco.py
-  |--- jubileu.py
+  |--- maria.py
   |--- requirements.txt
   |--- README.md
 ```
@@ -62,6 +65,18 @@ face-recognition
 ### reconhecimento.py
 
 Esse é o arquivo principal, onde você escreverá a maior parte do código.
+
+### treinamento.py
+
+Nesse arquivo será treinado o modelo
+
+### modelos
+
+Pasta que possuirá os modelos
+
+### imagens
+
+Pasta que possuirá as imagens que serao treinadas
 
 ### requirements.txt
 
@@ -71,7 +86,7 @@ Esse é o arquivo que contém as bibliotecas que serão instaladas.
 
 Arquivo para o desafio do `Banco Central do Araripe`.
 
-### jubileu.py
+### maria.py
 
-Arquivo para o desafio do `Jubileu`.
+Arquivo para o desafio do `Video de Maria`.
 
