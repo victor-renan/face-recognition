@@ -21,10 +21,9 @@ e depois
 pip --version
 ```
 
-Caso o python não esteja instalado, você pode baixa-lo pelo seguinte link `https://www.python.org/ftp/python/3.10.10/python-3.10.10-amd64.exe`.
-
 *Obs.: Ambos os comandos devem devem retornar uma versão, ex.: Python 3.10.2*
 
+Caso o python não esteja instalado, você pode baixa-lo pelo seguinte link (https://www.python.org/ftp/python/3.10.10/python-3.10.10-amd64.exe).
 
 ## 2. Baixe o Iriun Webcam
 
@@ -54,6 +53,7 @@ face-recognition
   |--- modelos
   |--- imagens
   |--- .gitignore
+  |--- automacao.py
   |--- reconhecimento.py
   |--- treinamento.py
   |--- introd.py
@@ -81,7 +81,11 @@ Pasta onde serão gerados os modelos
 
 ### introd.py
 
-Arquivo para o desafio do `Banco Central do Araripe`.
+Arquivo de introdução a Python
+
+### automacao.py
+
+Arquivo de exemplificação do selenium
 
 ### requirements.txt
 
