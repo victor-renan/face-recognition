@@ -21,10 +21,9 @@ e depois
 pip --version
 ```
 
-Caso o python não esteja instalado, você pode baixa-lo pelo seguinte link `https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe`.
-
 *Obs.: Ambos os comandos devem devem retornar uma versão, ex.: Python 3.10.2*
 
+Caso o python não esteja instalado, você pode baixa-lo pelo seguinte link (https://www.python.org/ftp/python/3.10.10/python-3.10.10-amd64.exe).
 
 ## 2. Baixe o Iriun Webcam
 
@@ -42,7 +41,7 @@ Depois de baixar, faça a extração do arquivo baixado.
 
 ### Abrindo a pasta no VS Code
 
-Em seguida abra o `VS Code` e clique em `File` ou `Arquivo` > `Open Folder` ou `Abrir Pasta` e selecione a pasta `face-recognition` que você extraiu. _Obs.: a pasta está dentro da pasta `face-recognition-main-x`_
+Em seguida abra o `VS Code` e clique em `File` ou `Arquivo` > `Open Folder` ou `Abrir Pasta` e selecione a pasta `face-recognition-main` que você extraiu.
 
 
 ## 4. Uma olhada pelos arquivos baixados
@@ -51,11 +50,13 @@ Quando você extrair a pasta, os seguintes arquivos estarão na pasta:
 
 ```
 face-recognition
-  |--- .gitignore
   |--- modelos
   |--- imagens
+  |--- .gitignore
+  |--- automacao.py
   |--- reconhecimento.py
   |--- treinamento.py
+  |--- introd.py
   |--- banco.py
   |--- maria.py
   |--- requirements.txt
@@ -68,15 +69,23 @@ Esse é o arquivo principal, onde você escreverá a maior parte do código.
 
 ### treinamento.py
 
-Nesse arquivo será treinado o modelo
-
-### modelos
-
-Pasta que possuirá os modelos
+Arquivo onde será feito o treinamento.
 
 ### imagens
 
-Pasta que possuirá as imagens que serao treinadas
+Pasta onde serão colocadas as imagens
+
+### modelos
+
+Pasta onde serão gerados os modelos
+
+### introd.py
+
+Arquivo de introdução a Python
+
+### automacao.py
+
+Arquivo de exemplificação do selenium
 
 ### requirements.txt
 
@@ -88,5 +97,18 @@ Arquivo para o desafio do `Banco Central do Araripe`.
 
 ### maria.py
 
-Arquivo para o desafio do `Video de Maria`.
+Arquivo para o desafio do `Vídeo de Maria`.
 
+# Desafio 1: O Vídeo de Maria
+
+Maria está com um sério problema: sua mãe a chama a cada instante e ela precisa ficar pausando um vídeo que ela está assistindo. Como ela estava com muita preguiça, decidiu implantar um sistema de reconhecimentofacial para pausar o video sempre que ela não estiver na frente do computador, e dar play sempre que ela estiver.Como maria pode fazer isso?
+
+Link do vídeo: `https://www.youtube.com/watch?v=WWn4lfNQy2s`
+
+**Boa sorte!**
+
+# Desafio 2: O Banco Central de Araripe
+
+O gerente do Banco Central do Araripe está enfrentando problemas de velocidade e queria mudar o sistema de autenticação do seu sistema da maneira clássica para a detecção facial. Como ele poderia fazer isso?
+
+**Boa Sorte!**
