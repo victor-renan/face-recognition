@@ -42,7 +42,7 @@ Depois de baixar, faça a extração do arquivo baixado.
 
 ### Abrindo a pasta no VS Code
 
-Em seguida abra o `VS Code` e clique em `File` ou `Arquivo` > `Open Folder` ou `Abrir Pasta` e selecione a pasta `face-recognition` que você extraiu. _Obs.: a pasta está dentro da pasta `face-recognition-main-x`_
+Em seguida abra o `VS Code` e clique em `File` ou `Arquivo` > `Open Folder` ou `Abrir Pasta` e selecione a pasta `face-recognition-main` que você extraiu.
 
 
 ## 4. Uma olhada pelos arquivos baixados
