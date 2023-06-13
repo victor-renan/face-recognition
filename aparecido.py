@@ -1,1 +1,0 @@
-# Aplicar o classificador
