@@ -21,7 +21,7 @@ e depois
 pip --version
 ```
 
-Caso o python não esteja instalado, você pode baixa-lo pelo seguinte link `https://www.python.org/ftp/python/3.11.4/python-3.11.4-amd64.exe`.
+Caso o python não esteja instalado, você pode baixa-lo pelo seguinte link `https://www.python.org/ftp/python/3.10.10/python-3.10.10-amd64.exe`.
 
 *Obs.: Ambos os comandos devem devem retornar uma versão, ex.: Python 3.10.2*
 
