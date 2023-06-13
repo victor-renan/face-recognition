@@ -51,10 +51,14 @@ Quando você extrair a pasta, os seguintes arquivos estarão na pasta:
 
 ```
 face-recognition
+  |--- modelos
+  |--- imagens
   |--- .gitignore
   |--- reconhecimento.py
+  |--- treinamento.py
+  |--- introd.py
   |--- banco.py
-  |--- jubileu.py
+  |--- maria.py
   |--- requirements.txt
   |--- README.md
 ```
@@ -62,6 +66,22 @@ face-recognition
 ### reconhecimento.py
 
 Esse é o arquivo principal, onde você escreverá a maior parte do código.
+
+### treinamento.py
+
+Arquivo onde será feito o treinamento.
+
+### imagens
+
+Pasta onde serão colocadas as imagens
+
+### modelos
+
+Pasta onde serão gerados os modelos
+
+### introd.py
+
+Arquivo para o desafio do `Banco Central do Araripe`.
 
 ### requirements.txt
 
@@ -71,7 +91,20 @@ Esse é o arquivo que contém as bibliotecas que serão instaladas.
 
 Arquivo para o desafio do `Banco Central do Araripe`.
 
-### jubileu.py
+### maria.py
 
-Arquivo para o desafio do `Jubileu`.
+Arquivo para o desafio do `Vídeo de Maria`.
 
+# Desafio 1: O Vídeo de Maria
+
+Maria está com um sério problema: sua mãe a chama a cada instante e ela precisa ficar pausando um vídeo que ela está assistindo. Como ela estava com muita preguiça, decidiu implantar um sistema de reconhecimentofacial para pausar o video sempre que ela não estiver na frente do computador, e dar play sempre que ela estiver.Como maria pode fazer isso?
+
+Link do vídeo: `https://www.youtube.com/watch?v=WWn4lfNQy2s`
+
+**Boa sorte!**
+
+# Desafio 2: O Banco Central de Araripe
+
+O gerente do Banco Central do Araripe está enfrentando problemas de velocidade e queria mudar o sistema de autenticação do seu sistema da maneira clássica para a detecção facial. Como ele poderia fazer isso?
+
+**Boa Sorte!**

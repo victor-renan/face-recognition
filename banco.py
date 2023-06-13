@@ -13,8 +13,6 @@
 '''
 
 import PySimpleGUI as sg
-import time
-import math
 import random
 import base64
 
