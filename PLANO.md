@@ -8,6 +8,13 @@
 
 **Professor:** Luis Lourenço de Oliveira Filho
 
+**Alunos**:
+- José heron Alves Rodrigues
+- Ramon Martins Alves
+- Raimundo Nonato Domingos Ferreira Filho
+- Aparecido Ribeiro da Silva
+- Victor Renan Alves de Oliveira
+
 **Araripe-CE, 14/06/2023**
 
 ## Plano de Aula
@@ -16,7 +23,7 @@
 
 **Data:** 14/06/2023
 
-**Carga horária: 4 hr/aula**
+**Carga horária:** 4 hr/aula
 
 **Conteúdo:** Reconhecimento Facial com Python e OpenCV
 
