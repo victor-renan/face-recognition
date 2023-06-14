@@ -12,6 +12,8 @@ Seja bem vindo a oficina Reconhecimento Facial com Python e OpenCV! Abaixo estã
 
 Neste código, que faz parte do projeto da IX Maratona de TI sobre Reconhecimento Facial com Python e OpenCV, são apresentadas algumas instruções importantes para o desenvolvimento do projeto. O código possui um sumário detalhado, que aborda os seguintes tópicos:
 
+## [Plano de aula](https://github.com/victor-renan/face-recognition/blob/main/PLANO.md)
+
 1. [Verifique se o Python e o pip estão instalados](#1-verifique-se-o-python-e-o-pip-estão-instalados)
 2. [Baixe o Iriun Webcam](#2-baixe-o-iriun-webcam)
 3. [Baixe os recursos do Github](#3-baixe-os-recursos-do-github)
