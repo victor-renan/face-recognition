@@ -57,7 +57,7 @@ while True:
             cv.putText(tela, porcentagem, (x+5, y+h-5), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255,0), 2)
 
             if (labels[index] == labels[2]):
-                cv.putText(tela, "Liberado", (x+5, y+h+5), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255,0), 2)
+                cv.putText(tela, "Liberado", (x+5, y+h+10), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255,0), 2)
 
 
 

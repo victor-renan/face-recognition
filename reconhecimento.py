@@ -40,18 +40,18 @@ while True:
     rostos = classificador.detectMultiScale(imagem_cinza, 1.3, 5)
 
     for (x, y, w, h) in rostos:
-        cv.rectangle(tela, (x, y), (x + w, y + h), (255, 0, 0), 2)     
-        
-        index, probabilidade = reconhecedor.predict(imagem_cinza[y:y+h, x:x+w])
-        
-        porcetagem = str(" {0}%".format(round(100 - probabilidade)))
+        cv.rectangle(tela, (x, y), (x+w, y+h), (255, 0,0), 2)
 
-        if probabilidade < 100:
-            cv.putText(tela, labels[index].split('\n')[0], (x, y-10), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
-            cv.putText(tela, str(porcetagem), (x+w-50, y-10), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
+        index, probabilidade = reconhecedor.predict(imagem_cinza[y:y+h, x:x+w])
+
+        porcentagem = str(" {0}%".format(round(100 - probabilidade)))
+
+        if (probabilidade < 100): #BGR
+            cv.putText(tela, labels[index].split('\n')[0], (x+5, y-5), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255,0), 2)
+            cv.putText(tela, porcentagem, (x+5, y+h-5), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255,0), 2)
 
             if (labels[index] == labels[2]):
-                cv.putText(tela, "Liberado!", (x, y+h+30), cv.FONT_HERSHEY_COMPLEX, 1, (255, 0, 255), 2)
+                cv.putText(tela, "Liberado", (x+5, y+h+10), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255,0), 2)
         
         
         
