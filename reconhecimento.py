@@ -22,12 +22,13 @@ print(labels)
 classificador = cv.CascadeClassifier(
     cv.data.haarcascades + "haarcascade_frontalface_default.xml")
 
-# Cria um loop de leitura
+#Lê as informações da webcam
 while True:
+    # Cria um loop de leitura
     # Executa a leitura
     camera_aberta, tela = webcam.read()
 
-    # Verifica se nao tem erros
+    # Verifica se nao tem erros, verificar se camera_aberta é false
     if not camera_aberta:
         print("ocorreu algum erro na webcam")
         break
@@ -39,18 +40,21 @@ while True:
     rostos = classificador.detectMultiScale(imagem_cinza, 1.3, 5)
 
     for (x, y, w, h) in rostos:
-        cv.rectangle(tela, (x, y), (x + w, y + h), (255, 0, 0), 2)
-
+        cv.rectangle(tela, (x, y), (x + w, y + h), (255, 0, 0), 2)     
+        
         index, probabilidade = reconhecedor.predict(imagem_cinza[y:y+h, x:x+w])
-    
+        
+        porcetagem = str(" {0}%".format(round(100 - probabilidade)))
+
         if probabilidade < 100:
             cv.putText(tela, labels[index].split('\n')[0], (x, y-10), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
-            cv.putText(tela, str(str(round(100 - probabilidade) / 100)), (x+w-50, y-10), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
+            cv.putText(tela, str(porcetagem), (x+w-50, y-10), cv.FONT_HERSHEY_COMPLEX, 1, (0, 255, 0), 2)
 
-            if labels[index] == labels[2]:
+            if (labels[index] == labels[2]):
                 cv.putText(tela, "Liberado!", (x, y+h+30), cv.FONT_HERSHEY_COMPLEX, 1, (255, 0, 255), 2)
-                
-
+        
+        
+        
     # Abre a janela com a tela
     cv.imshow("Reconhecimento Facial com Python e OpenCV", tela)
 
