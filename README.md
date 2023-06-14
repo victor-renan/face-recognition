@@ -21,8 +21,13 @@ Neste código, que faz parte do projeto da IX Maratona de TI sobre Reconheciment
     2. [Operações com listas](#52-operações-com-listas)
     3. [Funções](#53-funções)
     4. [Trabalhando com arquivos de texto](#54-trabalhando-com-arquivos-de-texto)
-6. [Desafio 1: O Vídeo de Maria](#desafio-1-o-vídeo-de-maria)
-7. [Desafio 2: O Banco Central de Araripe](#desafio-2-o-banco-central-de-araripe)
+6. [Introdução ao OpenCV](#6-introdução-ao-opencv)
+    1. [Instalação do OpenCV](#61-instalação-do-opencv)
+    2. [Carregando e exibindo uma imagem](#62-carregando-e-exibindo-uma-imagem)
+    3. [Capturando e exibindo vídeo da câmera](#63-capturando-e-exibindo-vídeo-da-câmera)
+    4. [Detecção facial com o OpenCV](#64-detecção-facial-com-o-opencv)
+7. [Desafio 1: O Vídeo de Maria](#desafio-1-o-vídeo-de-maria)
+8. [Desafio 2: O Banco Central de Araripe](#desafio-2-o-banco-central-de-araripe)
 
 ## 1. Verifique se o Python e o pip estão instalados
 
@@ -276,6 +281,137 @@ Ou, de maneira mais resumida,
 linhas = open('nome_arquivo.txt').read().splitlines()
 
 # Saída: ["Linha", "Linha", "Linha", ...]
+```
+
+# 6. Introdução ao OpenCV
+
+O **OpenCV** (*Open Source Computer Vision*) é uma biblioteca popular e de código aberto amplamente utilizada para *processamento de imagens* e *visão computacional*. Ela fornece uma ampla variedade de funções e algoritmos que permitem realizar tarefas como leitura, gravação e processamento de imagens e vídeos.
+
+Com o OpenCV, é possível carregar imagens a partir de arquivos, realizar operações de pré-processamento, como redimensionamento e ajuste de contraste, e aplicar uma variedade de filtros para melhorar a qualidade da imagem. Além disso, a biblioteca permite **detectar e rastrear objetos**, realizar **reconhecimento facial**, extrair **características de imagem**, entre outras tarefas avançadas de visão computacional.
+
+Uma das características mais poderosas do OpenCV é a sua capacidade de trabalhar em tempo real com fluxos de vídeo. Isso significa que você pode aplicar algoritmos de processamento de imagem e visão computacional a partir de uma câmera em tempo real, abrindo um mundo de possibilidades para aplicações como **detecção de objetos em tempo real**, **análise de movimento** e muito mais.
+
+O OpenCV é escrito principalmente em C++, mas possui interfaces para várias linguagens de programação, incluindo Python, Java e C#. Isso torna a biblioteca acessível e utilizável em uma ampla gama de projetos e plataformas.
+
+## 6.1. Abrindo imagem
+
+Para abrir uma imagem usando o OpenCV, você pode seguir os seguintes passos:
+
+1. Primeiro, importe a biblioteca `cv2`.
+2. Utilize a função `cv2.imread()` para carregar a imagem desejada. Certifique-se de fornecer o caminho completo para a imagem.
+3. Verifique se a imagem foi carregada corretamente.
+4. Para exibir a imagem em uma janela, utilize a função `cv2.imshow()`. O primeiro parâmetro é o nome da janela que pode ser personalizado.
+5. Aguarde até que uma tecla seja pressionada para fechar a janela usando `cv2.waitKey(0)`.
+6. Por fim, feche todas as janelas abertas com `cv2.destroyAllWindows()`.
+
+Veja o exemplo abaixo:
+
+```python
+import cv2
+
+# Caminho completo para a imagem
+caminho_imagem = "caminho/para/imagem.jpg"
+
+# Carrega a imagem
+imagem = cv2.imread(caminho_imagem)
+
+# Verifica se a imagem foi carregada corretamente
+if imagem is not None:
+    # Exibe a imagem em uma janela
+    cv2.imshow("Imagem", imagem)
+    # Aguarda até que uma tecla seja pressionada
+    cv2.waitKey(0)
+    # Fecha a janela
+    cv2.destroyAllWindows()
+else:
+    print("Falha ao carregar a imagem.")
+```
+
+## 6.2. Abrindo Webcam
+
+O código abaixo abre a webcam padrão do sistema (geralmente a primeira webcam disponível), utilizando dos mesmos conceitos anteriores. Ele captura cada quadro de vídeo da webcam e exibe em uma janela chamada "Webcam". O loop é interrompido quando a tecla 'q' é pressionada.
+
+```python
+import cv2
+
+# Inicializa o objeto de captura de vídeo
+captura = cv2.VideoCapture(0)
+
+# Verifica se a webcam foi aberta corretamente
+if not captura.isOpened():
+    print("Não foi possível abrir a webcam.")
+    exit()
+
+# Loop principal para capturar e exibir o vídeo
+while True:
+    # Captura o próximo quadro da webcam
+    ret, quadro = captura.read()
+
+    # Verifica se o quadro foi capturado corretamente
+    if not ret:
+        print("Falha ao capturar o quadro.")
+        break
+
+    # Exibe o quadro em uma janela
+    cv2.imshow("Webcam", quadro)
+
+    # Verifica se a tecla 'q' foi pressionada para interromper o loop
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+# Libera o objeto de captura de vídeo e fecha as janelas
+captura.release()
+cv2.destroyAllWindows()
+```
+
+## 6.3. Criando um CascadeClassifier
+
+No código abaixo, você precisa substituir 'caminho/para/o/arquivo.xml' pelo caminho correto para o arquivo XML do classificador que deseja utilizar, como por exemplo o arquivo XML para detecção facial. Certifique-se de ter o OpenCV instalado em seu ambiente Python.
+
+O código irá abrir a webcam, capturar os frames, converter cada frame para escala de cinza e aplicar o classificador para detectar rostos no frame. Em seguida, desenha retângulos ao redor das faces detectadas e exibe o frame resultante em uma janela. O loop continuará até que a tecla 'q' seja pressionada, momento em que a webcam será liberada e as janelas serão fechadas.
+
+```python
+import cv2
+
+# Define o caminho para o arquivo XML do classificador
+caminho_arquivo_xml = 'caminho/para/o/arquivo.xml'
+
+# Cria um objeto CascadeClassifier
+classificador = cv2.CascadeClassifier(caminho_arquivo_xml)
+
+# Verifica se o classificador foi carregado corretamente
+if classificador.empty():
+    print("Não foi possível carregar o arquivo XML do classificador.")
+    exit()
+
+# Inicializa a webcam
+webcam = cv2.VideoCapture(0)
+
+# Loop para capturar e exibir os frames da webcam
+while True:
+    # Captura um frame da webcam
+    ret, frame = webcam.read()
+
+    # Converte o frame para escala de cinza
+    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+
+    # Aplica o classificador para detecção facial
+    faces = classificador.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30))
+
+    # Desenha um retângulo ao redor das faces detectadas
+    for (x, y, w, h) in faces:
+        cv2.rectangle(frame, (x, y), (x+w, y+h), (0, 255, 0), 2)
+
+    # Exibe o frame resultante
+    cv2.imshow('Detector Facial', frame)
+
+    # Verifica se a tecla 'q' foi pressionada para sair do loop
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+# Libera os recursos
+webcam.release()
+cv2.destroyAllWindows()
 ```
 
 # Desafio 1: O Vídeo de Maria
