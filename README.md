@@ -22,10 +22,9 @@ Neste código, que faz parte do projeto da IX Maratona de TI sobre Reconheciment
     3. [Funções](#53-funções)
     4. [Trabalhando com arquivos de texto](#54-trabalhando-com-arquivos-de-texto)
 6. [Introdução ao OpenCV](#6-introdução-ao-opencv)
-    1. [Instalação do OpenCV](#61-instalação-do-opencv)
-    2. [Carregando e exibindo uma imagem](#62-carregando-e-exibindo-uma-imagem)
-    3. [Capturando e exibindo vídeo da câmera](#63-capturando-e-exibindo-vídeo-da-câmera)
-    4. [Detecção facial com o OpenCV](#64-detecção-facial-com-o-opencv)
+    1. [Carregando e exibindo uma imagem](#61-carregando-e-exibindo-uma-imagem)
+    2. [Capturando e exibindo vídeo da câmera](#62-capturando-e-exibindo-vídeo-da-câmera)
+    3. [Detecção facial com o OpenCV](#63-detecção-facial-com-o-opencv)
 7. [Desafio 1: O Vídeo de Maria](#desafio-1-o-vídeo-de-maria)
 8. [Desafio 2: O Banco Central de Araripe](#desafio-2-o-banco-central-de-araripe)
 
