@@ -29,6 +29,7 @@ Neste código, que faz parte do projeto da IX Maratona de TI sobre Reconheciment
     3. [Criando um CascadeClassifier](#63-criando-um-cascadeclassifier)
 7. [Desafio 1: O Vídeo de Maria](#desafio-1-o-vídeo-de-maria)
 8. [Desafio 2: O Banco Central de Araripe](#desafio-2-o-banco-central-de-araripe)
+9. [Submissões e Certificado](#submissões-e-certificado)
 
 ## 1. Verifique se o Python e o pip estão instalados
 
@@ -43,7 +44,7 @@ pip --version
 
 *Obs.: Ambos os comandos devem devem retornar uma versão, ex.: Python 3.10.2*
 
-Caso o python não esteja instalado, você pode baixa-lo pelo seguinte link (https://www.python.org/ftp/python/3.10.10/python-3.10.10-amd64.exe).
+Caso o python não esteja instalado, você pode baixa-lo pelo seguinte link https://www.python.org/ftp/python/3.10.10/python-3.10.10-amd64.exe.
 
 ## 2. Baixe o Iriun Webcam
 
@@ -72,7 +73,6 @@ Quando você extrair a pasta, os seguintes arquivos estarão na pasta:
 face-recognition
   |--- modelos
   |--- imagens
-  |--- .gitignore
   |--- automacao.py
   |--- reconhecimento.py
   |--- treinamento.py
@@ -80,7 +80,7 @@ face-recognition
   |--- banco.py
   |--- maria.py
   |--- requirements.txt
-  |--- README.md
+  ...
 ```
 
 ### reconhecimento.py
@@ -415,6 +415,88 @@ webcam.release()
 cv2.destroyAllWindows()
 ```
 
+## 6.4. Criando um LBPHRecognizer
+
+O código abaixo mostra uma das maneiras de criar um reconhecedor por LBPH (Local Binary Pattern Histograms).
+
+```python
+import cv2
+import os
+import numpy as np
+
+# Function to load training images
+def load_training_images(directory):
+    images = []
+    labels = []
+    for folder_name in os.listdir(directory):
+        folder = os.path.join(directory, folder_name)
+        if not os.path.isdir(folder):
+            continue
+        for file_name in os.listdir(folder):
+            image = cv2.imread(os.path.join(folder, file_name), cv2.IMREAD_GRAYSCALE)
+            images.append(image)
+            labels.append(int(folder_name))
+    return images, labels
+
+# Load training images
+training_directory = 'path/to/training/images'
+training_images, training_labels = load_training_images(training_directory)
+
+# Create LBPH Face Recognizer object
+recognizer = cv2.face.LBPHFaceRecognizer_create()
+
+# Train the LBPH recognizer with training images
+recognizer.train(training_images, np.array(training_labels))
+
+# Function to recognize a face in an image
+def recognize_face(image):
+    gray_image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+    label, confidence = recognizer.predict(gray_image)
+    return label, confidence
+
+# Example usage: recognize a face in an image
+test_image = cv2.imread('path/to/test/image')
+label, confidence = recognize_face(test_image)
+print('Label:', label)
+print('Confidence:', confidence)
+```
+
+1. Importação das bibliotecas:
+   - `import cv2`: Importa a biblioteca OpenCV, que é usada para processamento de imagens e reconhecimento facial.
+   - `import os`: Importa a biblioteca os, que fornece funcionalidades para interagir com o sistema operacional.
+
+2. Função `load_training_images`:
+   - Carrega as imagens de treinamento e seus respectivos rótulos (labels) de um diretório específico.
+   - Percorre os subdiretórios dentro do diretório fornecido, lendo cada imagem e adicionando-a a uma lista de imagens.
+   - Também registra o rótulo correspondente a cada imagem na lista de rótulos.
+
+3. Carregamento das imagens de treinamento:
+   - Define o diretório que contém as imagens de treinamento.
+   - Chama a função `load_training_images` para carregar as imagens e rótulos de treinamento a partir do diretório.
+
+4. Criação do objeto LBPH Face Recognizer:
+   - Utiliza a função `cv2.face.LBPHFaceRecognizer_create()` para criar um objeto reconhecedor LBPH.
+
+5. Treinamento do reconhecedor LBPH:
+   - Utiliza o método `train` do objeto reconhecedor, passando as imagens de treinamento e seus rótulos.
+   - O reconhecedor é treinado para aprender a reconhecer os rostos correspondentes a cada rótulo.
+
+6. Função `recognize_face`:
+   - Recebe uma imagem como entrada.
+   - Converte a imagem em escala de cinza.
+   - Utiliza o método `predict` do objeto reconhecedor para reconhecer o rótulo e a confiança do rosto presente na imagem.
+
+7. Reconhecimento de uma face em uma imagem de teste:
+   - Carrega uma imagem de teste específica.
+   - Chama a função `recognize_face` para reconhecer o rosto presente na imagem.
+   - Imprime o rótulo e a confiança associados ao rosto reconhecido.
+
+Certifique-se de substituir os caminhos das imagens de treinamento e da imagem de teste pelos caminhos reais correspondentes ao seu ambiente.
+
+
+# 7. Selenium
+
+
 # Desafio 1: O Vídeo de Maria
 
 Maria está com um sério problema: sua mãe a chama a cada instante e ela precisa ficar pausando um vídeo que ela está assistindo. Como ela estava com muita preguiça, decidiu implantar um sistema de reconhecimentofacial para pausar o video sempre que ela não estiver na frente do computador, e dar play sempre que ela estiver.Como maria pode fazer isso?
@@ -428,3 +510,11 @@ Link do vídeo: `https://www.youtube.com/watch?v=WWn4lfNQy2s`
 O gerente do Banco Central do Araripe está enfrentando problemas de velocidade e queria mudar o sistema de autenticação do seu sistema da maneira clássica para a detecção facial. Como ele poderia fazer isso?
 
 **Boa Sorte!**
+
+# Submissões e certificado
+
+Submeta suas respostas para esses desafios no site https://facerecogpyocv.vercel.app/
+
+Crie uma conta, caso não tenha, e teste suas resoluções. Caso passe nos testes, você está apto a receber um certificado de conclusão verificado e totalmente digital, semelhante ao que está a seguir:
+
+![Imagem do Cert](https://i.imgur.com/Nby4mE8.png)
