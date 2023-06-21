@@ -27,9 +27,13 @@ Neste código, que faz parte do projeto da IX Maratona de TI sobre Reconheciment
     1. [Abrindo imagem](#61-abrindo-imagem)
     2. [Abrindo Webcam](#62-abrindo-webcam)
     3. [Criando um CascadeClassifier](#63-criando-um-cascadeclassifier)
-7. [Desafio 1: O Vídeo de Maria](#desafio-1-o-vídeo-de-maria)
-8. [Desafio 2: O Banco Central de Araripe](#desafio-2-o-banco-central-de-araripe)
-9. [Submissões e Certificado](#submissões-e-certificado)
+    4. [Criando um LBPHRecognizer](#64-criando-um-lbphrecognizer)
+7. [Selenium](#7-selenium)
+    1. [Usando o webdriver](#71-usando-o-webdriver)
+    2. [Abrindo vídeo do Youtube](#72-abrindo-video-do-youtube)
+9. [Desafio 1: O Vídeo de Maria](#desafio-1-o-vídeo-de-maria)
+10. [Desafio 2: O Banco Central de Araripe](#desafio-2-o-banco-central-de-araripe)
+11. [Submissões e Certificado](#submissões-e-certificado)
 
 ## 1. Verifique se o Python e o pip estão instalados
 
@@ -496,6 +500,65 @@ Certifique-se de substituir os caminhos das imagens de treinamento e da imagem d
 
 # 7. Selenium
 
+O Selenium é uma biblioteca popular de automação de testes e interação com navegadores web. Ele fornece uma interface para controlar e interagir com navegadores web de forma programática, permitindo a automatização de tarefas repetitivas, a realização de testes automatizados em páginas da web e a extração de dados de sites.
+
+Com o Selenium, é possível desenvolver scripts em diversas linguagens de programação, incluindo Python, Java, C#, entre outras. Ele oferece recursos para localizar e manipular elementos da página, preencher formulários, clicar em botões, realizar ações de rolagem, capturar screenshots, além de possibilitar a execução de comandos JavaScript no contexto da página.
+
+# 7.1. Usando o webdriver
+
+O Selenium WebDriver é uma parte fundamental do Selenium, que fornece uma API de alto nível para interagir com navegadores web. Ele é responsável por controlar o navegador de forma programática e executar ações como clicar em elementos, preencher formulários, enviar requisições, aguardar por elementos na página e capturar informações. Veja o exemplo a seguir onde o GitHub é aberto:
+
+```python
+# Importando as bibliotecas necessárias
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
+# Inicializando o driver do Selenium
+driver = webdriver.Chrome()
+
+# Acessando um site
+driver.get("https://github.com")
+
+# Interagindo com elementos da página
+campo_busca = driver.find_element_by_name("q")  # Localiza o campo de busca
+campo_busca.send_keys("Selenium Python")  # Insere o termo de busca
+campo_busca.send_keys(Keys.RETURN)  # Simula a tecla Enter
+```
+
+# 7.2. Abrindo Video do Youtube
+Abaixo, está um código de como abrir um vídeo do Youtube com o `Selenium` e interagir com o mesmo:
+
+```python
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.keys import Keys
+import time
+
+# Inicializando o driver do Selenium
+driver = webdriver.Chrome()
+
+# Acessando o YouTube
+driver.get("https://www.youtube.com/video")
+
+# Aguardando o vídeo carregar
+time.sleep(5)  # Pausa de 5 segundos para o vídeo carregar (ajuste conforme necessário)
+
+# Pausando o vídeo pressionando a tecla de espaço
+body = driver.find_element(By.TAG_NAME, "body")
+body.send_keys(Keys.SPACE)
+
+# Aguardando 3 segundos
+time.sleep(3)
+
+# Despausando o vídeo pressionando a tecla de espaço novamente
+body.send_keys(Keys.SPACE)
+
+# Aguardando mais 5 segundos antes de fechar o navegador
+time.sleep(5)
+
+# Fechando o navegador
+driver.quit()
+```
 
 # Desafio 1: O Vídeo de Maria
 
