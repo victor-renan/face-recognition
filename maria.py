@@ -11,6 +11,11 @@
 
     Link do vídeo: https://www.youtube.com/watch?v=WWn4lfNQy2s
 
-    Escreva seu código abaixo deste comentário
+    Lembre-se: para executar este arquivo, digite:
+    
+    ----------------------------------------------
+    python maria.py
+    ----------------------------------------------
+
     Boa sorte!
 '''
