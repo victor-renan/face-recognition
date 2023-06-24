@@ -17,7 +17,7 @@ def quadrado(imagem, x, y, w, h):
     return cv.rectangle(imagem, (x, y), (x+w, y+h), (255, 0, 0), 2)
 
 # get image names from path
-def obter_imagens_da_pasta(pasta):
+def listar_imagens_da_pasta(pasta):
     return [os.path.join(pasta, img) for img in os.listdir(pasta)]
 
 # convert filename to string
@@ -25,13 +25,13 @@ def obter_nome_imagem(imagem):
     return imagem.split('/')[-1].split('\\')[-1].split('.')[0].capitalize()
 
 # transform an image to array
-def imagem_para_array(imagem):
+def imagemcv_para_array(imagem):
     imagem_norm = cv.cvtColor(imagem, cv.COLOR_BGR2GRAY)
     imagem_norm = np.array(imagem_norm, 'uint8')
     return imagem_norm
 
 # test an image with opencv
-def teste_img(imagem):
+def teste_imagemcv(imagem):
     while True:
         cv.imshow("Teste", imagem)
 
