@@ -1,6 +1,5 @@
 # Importar os pacotes que usaremos
 import cv2 as cv
-import numpy as np
 
 # Criar uma leitura na webcam
 webcam = cv.VideoCapture(0)
@@ -32,5 +31,5 @@ while True:
 # Aplica as regras da webcam
 webcam.release()
 
-# Quando o loop eh encerrado destroi as janelas
+# Quando o loop e encerrado destroi as janelas
 cv.destroyAllWindows()
